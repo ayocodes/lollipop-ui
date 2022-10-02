@@ -1,9 +1,6 @@
 interface ModalState {
   showSettings: boolean;
-  showWelcome: boolean;
-  showZenMode: boolean;
-  showSchemaDetails: boolean;
-  showDownload: boolean;
+  showAdminNFT: boolean;
 }
 
 interface ModalProvider {

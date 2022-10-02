@@ -1,27 +1,19 @@
-import styled from "styled-components";
-import Navbar from "./Navbar";
+import AdminNFT from "./AdminNFT";
+import Background from "./Background";
+import SettingModal from "./SettingModal";
 
 interface IScaffoldProp {
   children: React.ReactNode;
 }
 
-const SScaffold = styled.div`
-  display: flex;
-  background-image: url("background.jpg");
-  /* opacity: 0.6; */
-  background-size: cover;
-`;
-
-const SContainer = styled.div`
-  width: 100%;
-`;
-
 const Scaffold: React.FC<IScaffoldProp> = ({ children }) => {
   return (
-    <SScaffold>
-      <SContainer>{children}</SContainer>
-      <Navbar />
-    </SScaffold>
+    <>
+      <SettingModal />
+      <AdminNFT />
+      <>{children}</>
+      <Background />
+    </>
   );
 };
 

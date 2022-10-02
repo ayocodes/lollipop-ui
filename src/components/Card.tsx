@@ -6,6 +6,7 @@ interface CardProps {
   color?: any;
   className?: any;
   children?: React.ReactNode;
+  func?: any;
 }
 interface CardStyleProps {
   color: any;
@@ -13,7 +14,7 @@ interface CardStyleProps {
 }
 
 const Sbackground = styled.div`
-  background-color: #CECECE;
+  background-color: #cecece;
   width: 27rem;
   height: 18.5rem;
   border-radius: 1.25rem;
@@ -28,6 +29,7 @@ const SCard = styled.div<CardStyleProps>`
   border-radius: 1.25rem;
   background-image: url("rustic-triangles.png");
   transition: 300ms ease-in-out;
+  cursor: pointer;
 
   :hover {
     transform: translate(1.5rem, -1.5rem);
@@ -42,12 +44,11 @@ const STitle = styled(Text)`
   text-align: center;
 `;
 
-
-const Card: React.FC<CardProps> = ({ color, className, children }) => {
+const Card: React.FC<CardProps> = ({ color, className, children, func }) => {
   return (
     <>
       <Sbackground>
-        <SCard color={color} className={className}>
+        <SCard color={color} className={className} onClick={func}>
           <STitle>{children}</STitle>
         </SCard>
       </Sbackground>
