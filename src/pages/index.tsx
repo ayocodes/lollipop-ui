@@ -41,8 +41,9 @@ const SCard = styled.div`
   height: 18.5rem;
   width: 27rem;
   border-radius: 1.25rem;
-  padding: 1rem;
-  background-color: white;
+  padding: 2rem;
+  background-image: url("lollipop.jpg");
+  background-size: contain;
   box-shadow: 0px 0px 32px 1px rgba(0, 0, 0, 0.25);
 `;
 
@@ -62,6 +63,12 @@ const SNavbar = styled.div`
   align-items: center;
 `;
 
+const Sp = styled.p`
+color: white;
+font-weight: 600;
+font-size: 25px;
+`
+
 const Home: NextPage = () => {
   const { dispatch } = useContext(ModalContext) as { dispatch: any };
 
@@ -78,7 +85,7 @@ const Home: NextPage = () => {
             <SHeader>Home</SHeader>
             <SBox1>
               <SCard>
-                <p>how it works</p>
+                <Sp>How it works</Sp>
               </SCard>
               <Link href="/send-tez">
                 <a>

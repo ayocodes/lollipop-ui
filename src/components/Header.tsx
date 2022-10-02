@@ -54,7 +54,9 @@ const Header: React.FC<IHeader> = ({ children }) => {
   return (
     <SContainer>
       <SBox>
-        <SBack onClick={() => Router.push("/")} />
+        <SBack onClick={() => Router.push("/")} >
+          <img src="Arrow - Left.svg" alt="" />
+        </SBack>
         <STitle>{children}</STitle>
       </SBox>
       <SBox>
