@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to lollipop 👋</h1>
+<h1 align="center">Welcome to lollipop 🍭</h1>
 
 Lollipop is a wrapper around Peppermint batch engine that allows you to send Tez and NFTs.
 
