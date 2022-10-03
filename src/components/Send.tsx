@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Settings from "./Settings";
+import Terminal from "./Terminal";
 
 interface ISendProps {
   color: string;
@@ -54,7 +55,8 @@ const Send: React.FC<ISendProps> = ({ color, children, boxShadow }) => {
       <SendButton color={color} boxShadow={boxShadow}>
         <SButtonText>{children}</SButtonText>
       </SendButton>
-      <Settings />
+      {/* <Settings /> */}
+      <Terminal />
     </SBox>
   );
 };

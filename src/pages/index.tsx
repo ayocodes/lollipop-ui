@@ -64,13 +64,17 @@ const SNavbar = styled.div`
 `;
 
 const Sp = styled.p`
-color: white;
-font-weight: 600;
-font-size: 25px;
-`
+  color: white;
+  font-weight: 600;
+  font-size: 25px;
+`;
 
 const Home: NextPage = () => {
   const { dispatch } = useContext(ModalContext) as { dispatch: any };
+
+  const handleOpenSetting = () => {
+    dispatch({ type: modalActions.OPEN_SETTING_MODAL });
+  };
 
   return (
     <div>
@@ -85,16 +89,18 @@ const Home: NextPage = () => {
             <SHeader>Home</SHeader>
             <SBox1>
               <SCard>
-                <Sp>How it works</Sp>
+                {/* <Sp>How it works</Sp> */}
               </SCard>
               <Link href="/send-tez">
                 <a>
-                  <Card color={"#221CA7"}>SEND TEZ</Card>
+                  <Card color={"#221CA7"} func={handleOpenSetting}>
+                    SEND TEZ
+                  </Card>
                 </a>
               </Link>
               <Link href="/send-nft">
                 <a>
-                  <Card color={"#FF3070"}>TRANSFER NFT</Card>
+                  <Card color={"#FF3070"} func={handleOpenSetting}>TRANSFER NFT</Card>
                 </a>
               </Link>
               <Card

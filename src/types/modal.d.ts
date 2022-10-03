@@ -1,6 +1,7 @@
 interface ModalState {
   showSettings: boolean;
   showAdminNFT: boolean;
+  showTerminal: boolean;
 }
 
 interface ModalProvider {

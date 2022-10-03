@@ -60,6 +60,7 @@ const AdminNFT = () => {
 
   const handleClick = useCallback(() => {
     dispatch({ type: modalActions.CLOSE_ADMIN_NFT_MODAL });
+    dispatch({ type: modalActions.OPEN_SETTING_MODAL });
   }, []);
 
   if (!showAdminNFT) {

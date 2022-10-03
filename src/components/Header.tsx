@@ -59,10 +59,6 @@ const Header: React.FC<IHeader> = ({ children }) => {
         </SBack>
         <STitle>{children}</STitle>
       </SBox>
-      <SBox>
-        <NetworkDropdown />
-        <AccountDropdown />
-      </SBox>
     </SContainer>
   );
 };

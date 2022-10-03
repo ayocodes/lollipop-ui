@@ -31,6 +31,19 @@ const reducer: ModalReducer = (state, action) => {
         showAdminNFT: false,
       };
       break;
+    case modalActions.OPEN_TERMINAL_MODAL:
+      newState = {
+        ...state,
+        showTerminal: true,
+      };
+      break;
+
+    case modalActions.CLOSE_TERMINAL_MODAL:
+      newState = {
+        ...state,
+        showTerminal: false,
+      };
+      break;
 
 
     default:
@@ -62,4 +75,7 @@ export const modalActions = {
 
   OPEN_ADMIN_NFT_MODAL: "OPEN_ADMIN_NFT_MODAL",
   CLOSE_ADMIN_NFT_MODAL: "CLOSE_ADMIN_NFT_MODAL",
+
+  OPEN_TERMINAL_MODAL: "OPEN_TERMINAL_MODAL",
+  CLOSE_TERMINAL_MODAL: "CLOSE_TERMINAL_MODAL",
 };

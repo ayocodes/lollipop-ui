@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const modalState = {
     showSettings: false,
     showAdminNFT: false,
+    showTerminal: true,
   };
 
   const sendTezState = [

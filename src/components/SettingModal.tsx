@@ -46,7 +46,7 @@ const SClose = styled.div`
 `;
 
 const STitle = styled.p`
-  padding-top: 2rem;
+  padding-top: 1rem;
   padding-bottom: 0.5rem;
   color: #4a4f63;
   font-size: 1rem;
@@ -103,11 +103,21 @@ const SettingModal = () => {
           </SClose>
         </SHeader>
         <SBody>
-          <STitle>DID Seed Key</STitle>
+          <STitle>RPC Url</STitle>
           <SInput></SInput>
-          <STitle>Ceramic Node</STitle>
+          <STitle>Private Key</STitle>
           <SInput></SInput>
-          <STitle>Server Endpoint</STitle>
+          <STitle>Contract Address</STitle>
+          <SInput></SInput>
+          <STitle>PG User</STitle>
+          <SInput></SInput>
+          <STitle>PG Password</STitle>
+          <SInput></SInput>
+          <STitle>PG Host</STitle>
+          <SInput></SInput>
+          <STitle>PG Port</STitle>
+          <SInput></SInput>
+          <STitle>PG Database</STitle>
           <SInput></SInput>
         </SBody>
         <SaveChange></SaveChange>
