@@ -13,23 +13,23 @@ export default async ({
 
   switch (action) {
     case deployActions.SEND_TEZ:
-      path = "/send-tez";
+      path = "/api/send-tez";
       break;
 
     case deployActions.TRANSFER_NFT:
-      path = "/transfer-nft";
+      path = "/api/transfer-nft";
       break;
 
     case deployActions.CREATE_NFT:
-      path = "/create-nft";
+      path = "/api/create-nft";
       break;
 
     case deployActions.MINT_NFT:
-      path = "/mint-nft";
+      path = "/api/mint-nft";
       break;
 
     case deployActions.CREATE_MINT_NFT:
-      path = "/create-mint-nft";
+      path = "/api/create-mint-nft";
       break;
 
     default:
@@ -55,7 +55,9 @@ export default async ({
     data: bodyContent,
   };
 
+  alert("hhh")
   let response = await axios.request(reqOptions);
+  console.log(response)
 };
 
 export const deployActions = {
