@@ -75,7 +75,7 @@ const AccountDropdown = () => {
         <>
           <SDropdown>
             {accountState.accounts?.map((account, i) => (
-              <SItem onClick={() => handleSelect(i)}>{account}</SItem>
+              <SItem key={i} onClick={() => handleSelect(i)}>{account}</SItem>
             ))}
           </SDropdown>
           <SModal onClick={() => setModal(false)} />

@@ -4,7 +4,11 @@ import Header from "../components/Header";
 import Send from "../components/Send";
 import { SettingsContext } from "../state/settings";
 import { sendTezActions, SendTezContext } from "../state/sendTez";
+<<<<<<< Updated upstream
 import deployValues, { deployActions } from "../utils/deployValues";
+=======
+import MintNFT from "./mint-nft";
+>>>>>>> Stashed changes
 
 const SBody = styled.div`
   display: flex;
@@ -92,7 +96,7 @@ const SAddField = styled.div`
   }
 `;
 
-const sendTEZ = () => {
+const SendTEZ = () => {
   const { sendTezState, sendTezDispatch } = useContext(SendTezContext) as {
     sendTezState: SendTezState;
     sendTezDispatch: any;
@@ -127,6 +131,7 @@ const sendTEZ = () => {
           </SContainer2>
           {sendTezState.map((e, i) => (
             <SendTezInputUI
+            key={i}
               sendTezObject={e}
               index={i}
               sendTezDispatch={sendTezDispatch}
@@ -146,7 +151,7 @@ const sendTEZ = () => {
   );
 };
 
-export default sendTEZ;
+export default SendTEZ;
 
 interface ISendTezInputUI {
   sendTezObject: SendTezObject;

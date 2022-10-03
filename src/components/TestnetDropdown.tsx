@@ -77,7 +77,7 @@ const NetworkDropdown = () => {
         <>
           <SDropdown>
             {networkState.networks?.map((network, i) => (
-              <SItem onClick={() => handleSelect(i)}>{network}</SItem>
+              <SItem key={i} onClick={() => handleSelect(i)}>{network}</SItem>
             ))}
           </SDropdown>
           <SModal onClick={() => setModal(false)} />

@@ -92,7 +92,7 @@ const SAddField = styled.div`
   }
 `;
 
-const mintNFT = () => {
+const MintNFT = () => {
   const { mintNFTState, mintNFTDispatch } = useContext(MintNFTContext) as {
     mintNFTState: MintNFTState;
     mintNFTDispatch: any;
@@ -127,6 +127,7 @@ const mintNFT = () => {
           </SContainer2>
           {mintNFTState.map((e, i) => (
             <MintNFTInputUI
+              key={i}
               mintNFTObject={e}
               index={i}
               mintNFTDispatch={mintNFTDispatch}
@@ -147,7 +148,7 @@ const mintNFT = () => {
   );
 };
 
-export default mintNFT;
+export default MintNFT;
 
 interface IMintNFTInputUI {
   mintNFTObject: MintNFTObject;

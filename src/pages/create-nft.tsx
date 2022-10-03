@@ -93,7 +93,7 @@ const SAddField = styled.div`
   }
 `;
 
-const createNFT = () => {
+const CreateNFT = () => {
   const { createNFTState, createNFTDispatch } = useContext(
     CreateNFTContext
   ) as {
@@ -130,6 +130,7 @@ const createNFT = () => {
           </SContainer2>
           {createNFTState.map((e, i) => (
             <CreateNFTInputUI
+              key={i}
               createNFTObject={e}
               index={i}
               createNFTDispatch={createNFTDispatch}
@@ -149,7 +150,7 @@ const createNFT = () => {
   );
 };
 
-export default createNFT;
+export default CreateNFT;
 
 interface ICreateNFTInputUI {
   createNFTObject: CreateNFTObject;
