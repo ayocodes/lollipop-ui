@@ -2,13 +2,9 @@ import React, { ChangeEvent, useCallback, useContext } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Send from "../components/Send";
-import { SettingsContext } from "../state/settings";
 import { sendTezActions, SendTezContext } from "../state/sendTez";
-<<<<<<< Updated upstream
+import { SettingsContext } from "../state/settings";
 import deployValues, { deployActions } from "../utils/deployValues";
-=======
-import MintNFT from "./mint-nft";
->>>>>>> Stashed changes
 
 const SBody = styled.div`
   display: flex;
@@ -131,7 +127,7 @@ const SendTEZ = () => {
           </SContainer2>
           {sendTezState.map((e, i) => (
             <SendTezInputUI
-            key={i}
+              key={i}
               sendTezObject={e}
               index={i}
               sendTezDispatch={sendTezDispatch}
