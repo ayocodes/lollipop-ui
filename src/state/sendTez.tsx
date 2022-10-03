@@ -12,7 +12,7 @@ const reducer = (state: SendTezState, action: SendTezAction) => {
         ...state,
         {
           amount: 0,
-          toAddress: "",
+          to_address: "",
         },
       ];
       break;

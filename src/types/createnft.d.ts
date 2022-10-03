@@ -1,8 +1,8 @@
 type CreateNFTState = CreateNFTObject[];
 
 interface CreateNFTObject {
-  tokenID: number;
-  metadata: string;
+  token_id: number;
+  metadata_ipfs: string;
 }
 
 interface CreateNFTAction {
@@ -12,7 +12,7 @@ interface CreateNFTAction {
 
 interface CreateNFTPayload {
   index?: number;
-  name?: "metadata" | "tokenID";
+  name?: "metadata_ipfs" | "token_id";
   value?: number | string;
 }
 

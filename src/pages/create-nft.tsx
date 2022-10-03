@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Send from "../components/Send";
 import { createNFTActions, CreateNFTContext } from "../state/createNFT";
+import { SettingsContext } from "../state/settings";
+import deployValues, { deployActions } from "../utils/deployValues";
 
 const SBody = styled.div`
   display: flex;
@@ -99,6 +101,18 @@ const createNFT = () => {
     createNFTDispatch: any;
   };
 
+  const { settingsState } = useContext(SettingsContext) as {
+    settingsState: SettingsState;
+  };
+
+  const handleSubmit = () => {
+    deployValues({
+      config: settingsState,
+      values: createNFTState,
+      action: deployActions.CREATE_NFT,
+    });
+  };
+
   const handleAddField = useCallback(() => {
     createNFTDispatch({
       type: createNFTActions.ADD_FIELD,
@@ -123,7 +137,11 @@ const createNFT = () => {
           ))}
           <SAddField onClick={handleAddField}>Add Another Field</SAddField>
         </SContainer>
-        <Send boxShadow={"rgba(255, 48, 247, 0.5)"} color={"#FF30F7"}>
+        <Send
+          boxShadow={"rgba(255, 48, 247, 0.5)"}
+          color={"#FF30F7"}
+          func={handleSubmit}
+        >
           Mint
         </Send>
       </SMain>
@@ -167,15 +185,15 @@ const CreateNFTInputUI: React.FC<ICreateNFTInputUI> = ({
   return (
     <SContainer2>
       <STokenID
-        value={createNFTObject.tokenID}
+        value={createNFTObject.token_id}
         onChange={handleInputChange}
-        name="tokenID"
+        name="token_id"
         type="text"
       />
       <SMetadata
-        value={createNFTObject.metadata}
+        value={createNFTObject.metadata_ipfs}
         onChange={handleInputChange}
-        name="metadata"
+        name="metadata_ipfs"
         type="text"
       />
       <SClose onClick={handleDelete}>

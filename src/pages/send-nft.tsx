@@ -2,7 +2,9 @@ import React, { ChangeEvent, useCallback, useContext } from "react";
 import styled from "styled-components";
 import Send from "../components/Send";
 import Header from "../components/Header";
+import { SettingsContext } from "../state/settings";
 import { sendNFTActions, SendNFTContext } from "../state/sendNFT";
+import deployValues, { deployActions } from "../utils/deployValues";
 
 const SBody = styled.div`
   display: flex;
@@ -96,6 +98,18 @@ const sendNFT = () => {
     sendNFTDispatch: any;
   };
 
+  const { settingsState } = useContext(SettingsContext) as {
+    settingsState: SettingsState;
+  };
+
+  const handleSubmit = () => {
+    deployValues({
+      config: settingsState,
+      values: sendNFTState,
+      action: deployActions.TRANSFER_NFT,
+    });
+  };
+
   const handleAddField = useCallback(() => {
     sendNFTDispatch({
       type: sendNFTActions.ADD_FIELD,
@@ -120,7 +134,11 @@ const sendNFT = () => {
           ))}
           <SAddField onClick={handleAddField}>Add Another Field</SAddField>
         </SContainer>
-        <Send boxShadow={"rgba(255, 48, 112, 0.5)"} color={"#FF3070"}>
+        <Send
+          boxShadow={"rgba(255, 48, 112, 0.5)"}
+          color={"#FF3070"}
+          func={handleSubmit}
+        >
           Send
         </Send>
       </SMain>
@@ -164,15 +182,15 @@ const SendNFTInputUI: React.FC<ISendNFTInputUI> = ({
   return (
     <SContainer2>
       <STokenID
-        value={sendNFTObject.tokenID}
+        value={sendNFTObject.token_id}
         onChange={handleInputChange}
-        name="tokenID"
+        name="token_id"
         type="number"
       />
       <SAddress
-        value={sendNFTObject.toAddress}
+        value={sendNFTObject.to_address}
         onChange={handleInputChange}
-        name="toAddress"
+        name="to_address"
         type="text"
       />
       <SClose onClick={handleDelete}>

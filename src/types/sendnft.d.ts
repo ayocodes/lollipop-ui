@@ -1,8 +1,8 @@
 type SendNFTState = SendNFTObject[];
 
 interface SendNFTObject {
-  tokenID: number;
-  toAddress: string;
+  token_id: number;
+  to_address: string;
 }
 
 interface SendNFTAction {
@@ -12,7 +12,7 @@ interface SendNFTAction {
 
 interface SendNFTPayload {
   index?: number;
-  name?: "toAddress" | "tokenID";
+  name?: "to_address" | "token_id";
   value?: number | string;
 }
 

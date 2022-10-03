@@ -11,8 +11,8 @@ const reducer = (state: MintNFTState, action: MintNFTAction) => {
       newState = [
         ...state,
         {
-          tokenID: state.length + 1,
-          toAddress: "",
+          token_id: state.length + 1,
+          to_address: "",
         },
       ];
       break;

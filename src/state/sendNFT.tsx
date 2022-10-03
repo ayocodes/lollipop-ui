@@ -11,8 +11,8 @@ const reducer = (state: SendNFTState, action: SendNFTAction) => {
       newState = [
         ...state,
         {
-          tokenID: state.length + 1,
-          toAddress: "",
+          token_id: state.length + 1,
+          to_address: "",
         },
       ];
       break;

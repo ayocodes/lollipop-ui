@@ -7,6 +7,7 @@ interface ISendProps {
   color: string;
   boxShadow: string;
   children?: React.ReactNode;
+  func?: any;
 }
 
 const SBox = styled.div`
@@ -49,10 +50,10 @@ const SButtonText = styled.div`
   font-family: "Luckiest Guy";
 `;
 
-const Send: React.FC<ISendProps> = ({ color, children, boxShadow }) => {
+const Send: React.FC<ISendProps> = ({ color, children, boxShadow, func }) => {
   return (
     <SBox>
-      <SendButton color={color} boxShadow={boxShadow}>
+      <SendButton color={color} boxShadow={boxShadow} onClick={func}>
         <SButtonText>{children}</SButtonText>
       </SendButton>
       {/* <Settings /> */}

@@ -2,7 +2,7 @@ type SendTezState = SendTezObject[];
 
 interface SendTezObject {
   amount: number;
-  toAddress: string;
+  to_address: string;
 }
 
 interface SendTezAction {
@@ -12,7 +12,7 @@ interface SendTezAction {
 
 interface SendTezPayload {
   index?: number;
-  name?: "toAddress" | "amount";
+  name?: "to_address" | "amount";
   value?: number | string;
 }
 

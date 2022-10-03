@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import { ChangeEvent, useCallback, useContext } from "react";
 import styled from "styled-components";
-import { ModalContext, modalActions} from "../state/modals";
+import { settingsActions, SettingsContext } from "../state/settings";
+import { ModalContext, modalActions } from "../state/modals";
 import SaveChange from "./SaveChange";
 
 const SModal = styled.div`
@@ -34,14 +35,14 @@ const SHeader = styled.div`
 `;
 
 const SClose = styled.div`
-  width: 3rem;
-  height: 3rem;
+  width: 2.4rem;
+  height: 2.4rem;
   display: grid;
   place-items: center;
   border-radius: 0.5rem;
   transition: 200ms ease-in-out;
   :hover {
-    background: ${({ theme }) => theme.accent1};
+    background-color: #c8c8c8;
   }
 `;
 
@@ -85,6 +86,39 @@ const SettingModal = () => {
     dispatch: any;
   };
 
+  const { modalState, modalDispatch } = useContext(ModalContext) as {
+    modalState: ModalState;
+    modalDispatch: any;
+  };
+
+  const { settingsState, settingsDispatch } = useContext(SettingsContext) as {
+    settingsState: SettingsState;
+    settingsDispatch: (x: SettingsAction) => void;
+  };
+
+  const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    settingsDispatch({
+      type: settingsActions.CHANGE_INPUT,
+      payload: {
+        name: e.target.name,
+        value: e.target.value,
+      } as SettingsPayload,
+    });
+  }, []);
+
+  const handleSaveChanges = useCallback(() => {
+    modalDispatch({ type: modalActions.CLOSE_SETTING_MODAL });
+  }, [modalActions]);
+
+  const handleReset = useCallback((state: SettingsState) => {
+    settingsDispatch({
+      type: settingsActions.RESET_STATE,
+      payload: {
+        state: state,
+      },
+    });
+  }, []);
+
   if (!showSettings) {
     return null;
   }
@@ -104,23 +138,83 @@ const SettingModal = () => {
         </SHeader>
         <SBody>
           <STitle>RPC Url</STitle>
-          <SInput></SInput>
+          <SInput
+            type="text"
+            value={settingsState.rpcUrl}
+            onChange={handleInputChange}
+            name="rpcUrl"
+            autoComplete="off"
+          ></SInput>
+          <STitle>Public Key</STitle>
+          <SInput
+            type="text"
+            value={settingsState.publicKey}
+            onChange={handleInputChange}
+            name="publicKey"
+            autoComplete="off"
+          ></SInput>
           <STitle>Private Key</STitle>
-          <SInput></SInput>
+          <SInput
+            type="text"
+            value={settingsState.privateKey}
+            onChange={handleInputChange}
+            name="privateKey"
+            autoComplete="off"
+          ></SInput>
           <STitle>Contract Address</STitle>
-          <SInput></SInput>
+          <SInput
+            type="text"
+            value={settingsState.contractAddress}
+            onChange={handleInputChange}
+            name="contractAddress"
+            autoComplete="off"
+          ></SInput>
           <STitle>PG User</STitle>
-          <SInput></SInput>
+          <SInput
+            type="text"
+            value={settingsState.pgUser}
+            onChange={handleInputChange}
+            name="pgUser"
+            autoComplete="off"
+          ></SInput>
           <STitle>PG Password</STitle>
-          <SInput></SInput>
+          <SInput
+            type="text"
+            value={settingsState.pgPassword}
+            onChange={handleInputChange}
+            name="pgPassword"
+            autoComplete="off"
+          ></SInput>
           <STitle>PG Host</STitle>
-          <SInput></SInput>
+          <SInput
+            type="text"
+            value={settingsState.pgHost}
+            onChange={handleInputChange}
+            name="pgHost"
+            autoComplete="off"
+          ></SInput>
           <STitle>PG Port</STitle>
-          <SInput></SInput>
+          <SInput
+            type="text"
+            value={settingsState.pgPort}
+            onChange={handleInputChange}
+            name="pgPort"
+            autoComplete="off"
+          ></SInput>
           <STitle>PG Database</STitle>
-          <SInput></SInput>
+          <SInput
+            type="text"
+            value={settingsState.pgDatabase}
+            onChange={handleInputChange}
+            name="pgDatabase"
+            autoComplete="off"
+          ></SInput>
         </SBody>
-        <SaveChange></SaveChange>
+        <SaveChange
+          state={settingsState}
+          saveChanges={() => handleSaveChanges()}
+          resetChanges={(state) => handleReset(state)}
+        />
       </SSchema>
     </SModal>
   );

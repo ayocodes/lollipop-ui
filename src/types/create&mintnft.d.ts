@@ -1,9 +1,9 @@
 type CreateAndMintNFTState = CreateAndMintNFTObject[];
 
 interface CreateAndMintNFTObject {
-  tokenID: number;
-  metadata: string;
-  toAddress: string;
+  token_id: number;
+  metadata_ipfs: string;
+  to_address: string;
 }
 
 interface CreateAndMintNFTAction {
@@ -13,7 +13,7 @@ interface CreateAndMintNFTAction {
 
 interface CreateAndMintNFTPayload {
   index?: number;
-  name?: "toAddress" | "tokenID";
+  name?: "to_address" | "token_id";
   value?: number | string;
 }
 

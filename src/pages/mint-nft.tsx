@@ -2,7 +2,9 @@ import React, { ChangeEvent, useCallback, useContext } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Send from "../components/Send";
+import { SettingsContext } from "../state/settings";
 import { mintNFTActions, MintNFTContext } from "../state/mintNFT";
+import deployValues, { deployActions } from "../utils/deployValues";
 
 const SBody = styled.div`
   display: flex;
@@ -96,6 +98,18 @@ const mintNFT = () => {
     mintNFTDispatch: any;
   };
 
+  const { settingsState } = useContext(SettingsContext) as {
+    settingsState: SettingsState;
+  };
+
+  const handleSubmit = () => {
+    deployValues({
+      config: settingsState,
+      values: mintNFTState,
+      action: deployActions.MINT_NFT,
+    });
+  };
+
   const handleAddField = useCallback(() => {
     mintNFTDispatch({
       type: mintNFTActions.ADD_FIELD,
@@ -121,7 +135,11 @@ const mintNFT = () => {
 
           <SAddField onClick={handleAddField}>Add Another Field</SAddField>
         </SContainer>
-        <Send boxShadow={"rgba(255, 48, 247, 0.5)"} color={"#FF30F7"}>
+        <Send
+          boxShadow={"rgba(255, 48, 247, 0.5)"}
+          color={"#FF30F7"}
+          func={handleSubmit}
+        >
           Mint
         </Send>
       </SMain>
@@ -165,15 +183,15 @@ const MintNFTInputUI: React.FC<IMintNFTInputUI> = ({
   return (
     <SContainer2>
       <STokenID
-        value={mintNFTObject.tokenID}
+        value={mintNFTObject.token_id}
         onChange={handleInputChange}
-        name="tokenID"
+        name="token_id"
         type="number"
       />
       <SAddress
-        value={mintNFTObject.toAddress}
+        value={mintNFTObject.to_address}
         onChange={handleInputChange}
-        name="toAddress"
+        name="to_address"
         type="text"
       />
       <SClose onClick={handleDelete}>
@@ -182,4 +200,3 @@ const MintNFTInputUI: React.FC<IMintNFTInputUI> = ({
     </SContainer2>
   );
 };
-

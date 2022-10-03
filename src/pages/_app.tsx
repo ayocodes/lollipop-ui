@@ -8,6 +8,7 @@ import { MintNFTProvider } from "../state/mintNFT";
 import { ModalProvider } from "../state/modals";
 import { SendNFTProvider } from "../state/sendNFT";
 import { SendTezProvider } from "../state/sendTez";
+import { SettingsProvider } from "../state/settings";
 import GlobalStyle from "../styles/global";
 import { darkTheme, lightTheme } from "../theme/theme";
 
@@ -17,44 +18,56 @@ function MyApp({ Component, pageProps }: AppProps) {
   const modalState = {
     showSettings: false,
     showAdminNFT: false,
-    showTerminal: true,
+    showTerminal: false,
   };
 
   const sendTezState = [
     {
       amount: 0,
-      toAddress: "",
+      to_address: "",
     },
   ];
 
   const SendNFTState = [
     {
-      tokenID: 1,
-      toAddress: "",
+      token_id: 1,
+      to_address: "",
     },
   ];
 
   const CreateNFTState = [
     {
-      tokenID: 1,
-      metadata: "",
+      token_id: 1,
+      metadata_ipfs: "",
     },
   ];
 
   const MintNFTState = [
     {
-      tokenID: 1,
-      toAddress: "",
+      token_id: 1,
+      to_address: "",
     },
   ];
 
   const CreateAndMintNFTState = [
     {
-      tokenID: 1,
-      metadata: "",
-      toAddress: "",
+      token_id: 1,
+      metadata_ipfs: "",
+      to_address: "",
     },
   ];
+
+  const SettingsState = {
+    rpcUrl: "",
+    publicKey: "",
+    privateKey: "",
+    contractAddress: "",
+    pgUser: "",
+    pgPassword: "",
+    pgHost: "",
+    pgPort: "",
+    pgDatabase: "",
+  };
 
   return (
     <ModalProvider initialState={modalState}>
@@ -63,14 +76,16 @@ function MyApp({ Component, pageProps }: AppProps) {
           <CreateNFTProvider initialState={CreateNFTState}>
             <MintNFTProvider initialState={MintNFTState}>
               <CreateAndMintNFTProvider initialState={CreateAndMintNFTState}>
-                <ThemeProvider
-                  theme={theme === "dark" ? darkTheme : lightTheme}
-                >
-                  <GlobalStyle />
-                  <Scaffold>
-                    <Component {...pageProps} />
-                  </Scaffold>
-                </ThemeProvider>
+                <SettingsProvider initialState={SettingsState}>
+                  <ThemeProvider
+                    theme={theme === "dark" ? darkTheme : lightTheme}
+                  >
+                    <GlobalStyle />
+                    <Scaffold>
+                      <Component {...pageProps} />
+                    </Scaffold>
+                  </ThemeProvider>
+                </SettingsProvider>
               </CreateAndMintNFTProvider>
             </MintNFTProvider>
           </CreateNFTProvider>

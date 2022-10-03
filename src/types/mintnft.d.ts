@@ -1,8 +1,8 @@
 type MintNFTState = MintNFTObject[];
 
 interface MintNFTObject {
-  tokenID: number;
-  toAddress: string;
+  token_id: number;
+  to_address: string;
 }
 
 interface MintNFTAction {
@@ -12,7 +12,7 @@ interface MintNFTAction {
 
 interface MintNFTPayload {
   index?: number;
-  name?: "toAddress" | "tokenID";
+  name?: "to_address" | "token_id";
   value?: number | string;
 }
 

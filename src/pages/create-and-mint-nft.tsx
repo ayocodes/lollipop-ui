@@ -6,6 +6,8 @@ import {
   createAndMintNFTActions,
   CreateAndMintNFTContext,
 } from "../state/createAndMintNFT";
+import { SettingsContext } from "../state/settings";
+import deployValues, { deployActions } from "../utils/deployValues";
 
 const SBody = styled.div`
   display: flex;
@@ -101,6 +103,18 @@ const createAndMintNFT = () => {
     createAndMintNFTDispatch: any;
   };
 
+  const { settingsState } = useContext(SettingsContext) as {
+    settingsState: SettingsState;
+  };
+
+  const handleSubmit = () => {
+    deployValues({
+      config: settingsState,
+      values: createAndMintNFTState,
+      action: deployActions.CREATE_MINT_NFT,
+    });
+  };
+
   const handleAddField = useCallback(() => {
     createAndMintNFTDispatch({
       type: createAndMintNFTActions.ADD_FIELD,
@@ -126,7 +140,11 @@ const createAndMintNFT = () => {
           ))}
           <SAddField onClick={handleAddField}>Add Another Field</SAddField>
         </SContainer>
-        <Send boxShadow={"rgba(255, 48, 247, 0.5)"} color={"#FF30F7"}>
+        <Send
+          boxShadow={"rgba(255, 48, 247, 0.5)"}
+          color={"#FF30F7"}
+          func={handleSubmit}
+        >
           Mint
         </Send>
       </SMain>
@@ -170,21 +188,21 @@ const CreateAndMintNFTInputUI: React.FC<ICreateAndMintNFTInputUI> = ({
   return (
     <SContainer2>
       <STokenID
-        value={createAndMintNFTObject.tokenID}
+        value={createAndMintNFTObject.token_id}
         onChange={handleInputChange}
-        name="tokenID"
+        name="token_id"
         type="number"
       />
       <SInput
-        value={createAndMintNFTObject.toAddress}
+        value={createAndMintNFTObject.to_address}
         onChange={handleInputChange}
-        name="toAddress"
+        name="to_address"
         type="text"
       />
       <SInput
-        value={createAndMintNFTObject.metadata}
+        value={createAndMintNFTObject.metadata_ipfs}
         onChange={handleInputChange}
-        name="metadata"
+        name="metadata_ipfs"
         type="text"
       />
       <SClose onClick={handleDelete}>

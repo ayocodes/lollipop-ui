@@ -2,8 +2,9 @@ import React, { ChangeEvent, useCallback, useContext } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Send from "../components/Send";
+import { SettingsContext } from "../state/settings";
 import { sendTezActions, SendTezContext } from "../state/sendTez";
-import mintNFT from "./mint-nft";
+import deployValues, { deployActions } from "../utils/deployValues";
 
 const SBody = styled.div`
   display: flex;
@@ -97,6 +98,18 @@ const sendTEZ = () => {
     sendTezDispatch: any;
   };
 
+  const { settingsState } = useContext(SettingsContext) as {
+    settingsState: SettingsState;
+  };
+
+  const handleSubmit = () => {
+    deployValues({
+      config: settingsState,
+      values: sendTezState,
+      action: deployActions.SEND_TEZ,
+    });
+  };
+
   const handleAddField = useCallback(() => {
     sendTezDispatch({
       type: sendTezActions.ADD_FIELD,
@@ -121,7 +134,11 @@ const sendTEZ = () => {
           ))}
           <SAddField onClick={handleAddField}>Add Another Field</SAddField>
         </SContainer>
-        <Send boxShadow={"rgba(34, 28, 167, 0.5)"} color={"#221CA7"}>
+        <Send
+          boxShadow={"rgba(34, 28, 167, 0.5)"}
+          color={"#221CA7"}
+          func={handleSubmit}
+        >
           Send
         </Send>
       </SMain>
@@ -165,9 +182,9 @@ const SendTezInputUI: React.FC<ISendTezInputUI> = ({
   return (
     <SContainer2>
       <SAddress
-        value={sendTezObject.toAddress}
+        value={sendTezObject.to_address}
         onChange={handleInputChange}
-        name="toAddress"
+        name="to_address"
         type="text"
       />
       <SAmount

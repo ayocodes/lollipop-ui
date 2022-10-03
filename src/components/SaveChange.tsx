@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
+import Text from "./Text";
 
 const SBox = styled.div`
   width: 23rem;
   height: 4rem;
-  background: ${({ theme }) => theme.accent1};
+  background-color: #a09f9f;
   z-index: 1;
   position: absolute;
   display: flex;
@@ -48,16 +49,45 @@ const SBox1 = styled.div`
   user-select: none;
 `;
 
-const SaveChange = () => {
+const SaveChange = ({
+  state,
+  saveChanges,
+  resetChanges,
+}: {
+  state: any;
+  saveChanges: (state: any) => void;
+  resetChanges: (state: any) => void;
+}) => {
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    setSaved(false);
+  }, [state]);
+
+  const memoState = useMemo(() => state, []);
+
+  const handleSave = useCallback(() => {
+    saveChanges(state);
+    setSaved(true);
+  }, [state]);
+
+  const handleReset = useCallback(() => {
+    resetChanges(memoState);
+    setSaved(true);
+  }, [memoState]);
+
+  if (JSON.stringify(state) === JSON.stringify(memoState) || saved) {
+    return null;
+  }
 
   return (
     <SBox>
       <Sp>Save changes?</Sp>
       <SBox1>
-        <SReset>
+        <SReset onClick={handleReset}>
           <Sp>Reset</Sp>
         </SReset>
-        <SSave>
+        <SSave onClick={handleSave}>
           <Sp>Save</Sp>
         </SSave>
       </SBox1>

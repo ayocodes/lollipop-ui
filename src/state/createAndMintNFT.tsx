@@ -11,9 +11,9 @@ const reducer = (state: CreateAndMintNFTState, action: CreateAndMintNFTAction) =
       newState = [
         ...state,
         {
-          tokenID: state.length + 1,
-          metadata: "",
-          toAddress: "",
+          token_id: state.length + 1,
+          metadata_ipfs: "",
+          to_address: "",
         },
       ];
       break;
