@@ -2,6 +2,8 @@
 
 Lollipop is a wrapper around Peppermint batch engine that allows you to send Tez and NFTs.
 
+[link to server implementation](https://www.github.com/ayocodes/lollipop)
+
 ## Getting Started
 
 First, run the development server:
