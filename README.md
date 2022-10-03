@@ -1,13 +1,8 @@
-<h1 align="center">Welcome to lollipop 👋</h1>
+<h1 align="center">Welcome to lollipop 🍭</h1>
 
 Lollipop is a wrapper around Peppermint batch engine that allows you to send Tez and NFTs.
 
-
-![Alt text](screenshots/screenshoot1.jpg?raw=true "1")
-
-![Alt text](screenshots/screenshoot2.jpg?raw=true "2")
-
-![Alt text](screenshots/screenshoot3.jpg?raw=true "3")
+[link to server implementation](https://www.github.com/ayocodes/lollipop)
 
 ## Getting Started
 
@@ -18,3 +13,11 @@ npm run dev
 # or
 yarn dev
 ```
+
+![Alt text](screenshots/screenshot1.jpg?raw=true "1")
+
+![Alt text](screenshots/screenshot2.jpg?raw=true "2")
+
+![Alt text](screenshots/screenshot3.jpg?raw=true "3")
+
+![Alt text](screenshots/screenshot4.jpg?raw=true "4")

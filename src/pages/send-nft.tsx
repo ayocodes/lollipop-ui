@@ -92,7 +92,7 @@ const SAddField = styled.div`
   }
 `;
 
-const sendNFT = () => {
+const SendNFT = () => {
   const { sendNFTState, sendNFTDispatch } = useContext(SendNFTContext) as {
     sendNFTState: SendNFTState;
     sendNFTDispatch: any;
@@ -127,6 +127,7 @@ const sendNFT = () => {
           </SContainer2>
           {sendNFTState.map((e, i) => (
             <SendNFTInputUI
+              key={i}
               sendNFTObject={e}
               index={i}
               sendNFTDispatch={sendNFTDispatch}
@@ -146,7 +147,7 @@ const sendNFT = () => {
   );
 };
 
-export default sendNFT;
+export default SendNFT;
 
 interface ISendNFTInputUI {
   sendNFTObject: SendNFTObject;

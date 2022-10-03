@@ -95,7 +95,7 @@ const SAddField = styled.div`
   }
 `;
 
-const createAndMintNFT = () => {
+const CreateAndMintNFT = () => {
   const { createAndMintNFTState, createAndMintNFTDispatch } = useContext(
     CreateAndMintNFTContext
   ) as {
@@ -133,6 +133,7 @@ const createAndMintNFT = () => {
           </SContainer2>
           {createAndMintNFTState.map((e, i) => (
             <CreateAndMintNFTInputUI
+              key={i}
               createAndMintNFTObject={e}
               index={i}
               createAndMintNFTDispatch={createAndMintNFTDispatch}
@@ -152,7 +153,7 @@ const createAndMintNFT = () => {
   );
 };
 
-export default createAndMintNFT;
+export default CreateAndMintNFT;
 
 interface ICreateAndMintNFTInputUI {
   createAndMintNFTObject: CreateAndMintNFTObject;
